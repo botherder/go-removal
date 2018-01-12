@@ -108,4 +108,8 @@ func (r *Removal) Run() {
 	r.RemoveFiles()
 
 	log.Info("Completed")
+
+	log.Info("Press Enter to finish ...")
+	var b = make([]byte, 1)
+	os.Stdin.Read(b)
 }
