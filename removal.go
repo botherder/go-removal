@@ -44,6 +44,8 @@ func (r *Removal) KillProcesses() {
 				"pid": pid,
 			}).Info("Found a process matching the name")
 
+			exePath, err := GetProcessExe(pid)
+
 			err = KillProcessByPid(pid)
 			if err != nil {
 				log.WithFields(log.Fields{
@@ -57,8 +59,6 @@ func (r *Removal) KillProcesses() {
 			if err != nil {
 				continue
 			}
-
-			exePath, err := GetProcessExe(pid)
 
 			log.WithFields(log.Fields{
 				"name": processName,
