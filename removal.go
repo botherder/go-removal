@@ -83,7 +83,7 @@ func (r *Removal) RemoveFiles() {
 	for _, path := range r.Paths {
 		path = files.ExpandWindows(path)
 		if _, err := os.Stat(path); err == nil {
-			err = os.RemovaAll(path)
+			err = os.RemoveAll(path)
 			if err != nil {
 				log.WithFields(log.Fields{
 					"path": path,
