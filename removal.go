@@ -4,6 +4,7 @@ import (
 	"os"
 	"github.com/botherder/go-files"
 	log "github.com/sirupsen/logrus"
+	"github.com/mattn/go-colorable"
 )
 
 type Removal struct {
@@ -102,6 +103,9 @@ func (r *Removal) RemoveFiles() {
 }
 
 func (r *Removal) Run() {
+	log.SetFormatter(&log.TextFormatter{ForceColors: true})
+	log.SetOutput(colorable.NewColorableStdout())
+
 	log.Info("Launching removal tool for ", r.Name)
 
 	r.KillProcesses()
